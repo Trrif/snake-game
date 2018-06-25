@@ -34,6 +34,8 @@ export function findEmpty (map) {
     if (filteredMap[i] !== null) xArray.push(i)
   }
 
+  if (!xArray[0]) return {x: 0, y: 0} // if the all cells are filled return default object
+
   const randomX = +xArray[Math.floor(Math.random() * xArray.length)]
   const randomY = +filteredMap[randomX][Math.floor(Math.random() * filteredMap[randomX].length)]
 
