@@ -63,14 +63,14 @@ const game = (state = {}, action) => {
 
     case 'SET_STATUS': {
       const { map } = state
-
+      const { x, y, status } = payload
       return {
         ...state,
         map: {
           ...map,
-          [payload.x]: {
-            ...map[payload.x],
-            [payload.y]: payload.status
+          [x]: {
+            ...map[x],
+            [y]: status
           }
         }
       }
