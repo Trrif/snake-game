@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 class Menu extends Component {
   render () {
     const { start, changeValue, mapWidth, mapHeight, cellSize, maxSpeed } = this.props
+
     return (<div className='menuContainer'>
       <div className='description'>
         Максимальная скорость змейки (чем ниже значение тем выше максимальная скорость)

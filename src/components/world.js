@@ -5,11 +5,13 @@ import Snake from './snake'
 class World extends Component {
   componentDidMount () {
     const { changeDirection, worldTicker } = this.props
+
     worldTicker()
     window.onkeydown = changeDirection
   }
   render () {
     const { start, exit, losed, worldTicker } = this.props
+
     return losed
       ? <div className='loseMenu'>
         <button className='button' onClick={() => worldTicker(start)}>
