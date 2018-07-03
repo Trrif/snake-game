@@ -6,6 +6,7 @@ import game from './reducers'
 const initialState = {
   mapHeight: 10,
   mapWidth: 10,
+  fruitsPeriodicity: 3,
   maxSpeed: 200,
   started: false,
   losed: false,

@@ -57,7 +57,7 @@ export function changeDirection (event) {
 
 export function worldTicker (tickModificator) {
   return (dispatch, getState) => {
-    const { mapHeight, mapWidth, maxSpeed, snake, map, directionsMath } = getState()
+    const { mapHeight, mapWidth, maxSpeed, snake, map, directionsMath, fruitPeriodicity } = getState()
     const headNextPosition = getNextPosition(snake[0], mapWidth, mapHeight, directionsMath)
     const tailOfSnake = snake[snake.length - 1]
 
@@ -74,12 +74,14 @@ export function worldTicker (tickModificator) {
         dispatch(changeValue('losed', true))
         break
       }
+
       case 'fruit': {
         setTimeout(() => dispatch(worldTicker(() => dispatch(expandSnake()))), 1000 / snake.length < maxSpeed ? maxSpeed : 1000 / snake.length)
         break
       }
+
       default: {
-        if (Math.floor(Math.random() * 3) === 2) {
+        if (Math.floor(Math.random() * fruitPeriodicity) === fruitPeriodicity - 1) {
           setTimeout(() => dispatch(worldTicker(() => dispatch(generateFruit()))), 1000 / snake.length < maxSpeed ? maxSpeed : 1000 / snake.length)
         } else {
           setTimeout(() => dispatch(worldTicker()), 1000 / snake.length < maxSpeed ? maxSpeed : 1000 / snake.length)
